@@ -1,0 +1,24 @@
+<div class="poster" style="position: absolute; top: {{offset.offsetY}}px; left: {{offset.offsetX}}px;">
+    <div id="descr{{index}}" class="descr">
+        <h3>Mark {{owner}}</h1>
+        <md-button class="md-raised" ng-click="removeMark(index)">Remove Mark</md-button>
+        <md-content>
+            <md-list flex>
+                <md-list-item class="md-3-line" ng-repeat="item in offset.comments track by $index">
+                    <div class="md-list-item-text" layout="column">
+                        <h4>{{ owner }}</h4>
+                        <p ng-if="!edit">{{ item }}</p>
+                        <input ng-if="edit" ng-model="offset.comments[$index]">
+                        <md-button class="md-raised" ng-click="edit = !edit">Edit</md-button>
+                        <md-button class="md-raised" ng-click="removeComment($index)">Remove comment</md-button>
+                    </div>
+                </md-list-item>
+                <md-input-container class="md-block" flex-gt-sm>
+                    <label>Write comment</label>
+                    <input ng-model="comment">
+                    <md-button class="md-raised" ng-click="addComment(index)">Post this comment</md-button>
+                </md-input-container>
+            </md-list>
+        </md-content>
+    </div>
+</div>
